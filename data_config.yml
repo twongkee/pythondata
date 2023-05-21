@@ -1,0 +1,15 @@
+model:
+        n_jobs: -1
+        estimators: 10
+        random_state: 42
+data:
+        compression: bz2
+        compression_level: 3
+        kaggle: /data/kaggle
+        parquet: /data/parquet
+        modeldir: /home/twongkee/dev/riskthinking
+        featuredir: /data/slow/twongkee/dev/riskthinking/symbols_features
+logging:
+        logfile: /home/twongkee/dev/riskthinking/logs/eng.log
+        format: '%(asctime)s - %(levelname)s - %(message)s'
+
