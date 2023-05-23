@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "get-data"
+version = "0.1.0"
+description = "get kaffle data"
+authors = ["Todd Wongkee <twongkee@yahoo.com>"]
+readme = "README.md"
+packages = [{include = "get_data", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+kaggle = "^1.5.13"
+pyyaml = "^6.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
