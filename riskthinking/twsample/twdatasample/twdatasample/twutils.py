@@ -32,7 +32,7 @@ def getconfig(configfile="/twdata/data_config.yml"):
     return config
 
 
-def checkconfig(configfile='/twdata/data_config.yml'):
+def checkconfig(configfile="/twdata/data_config.yml"):
     # hard coding
     # check if config is valid
     # check if config dirs exist
@@ -57,7 +57,7 @@ def checkconfig(configfile='/twdata/data_config.yml'):
 
 
 def setuplogging(config):
-    logfile = config["logging"]["logdir"] + "/" + config['logging']['logfile']
+    logfile = config["logging"]["logdir"] + "/" + config["logging"]["logfile"]
     logformat = config["logging"]["format"]
 
     logging.basicConfig(

@@ -1,7 +1,7 @@
 # kaggle datasets download -d jacksoncrow/stock-market-dataset
 # assumes kaggle.json configured correctly
 import kaggle
-from twdatasample.twutils import getconfig, checkconfig
+from twdatasample.twutils import getconfig, checkconfig, setuplogging
 
 checkconfig()
 
@@ -12,8 +12,8 @@ config = getconfig()
 mylogger = setuplogging(config)
 
 mylogger.info(
-            "============================================================================="
-            )
+    "============================================================================="
+)
 mylogger.info("started get data")
 
 kaggle.api.authenticate()
