@@ -18,7 +18,7 @@ from twdatasample.twutils import (
 )
 
 # get config in global space
-config = getconfig("/data/data_config.yml")
+config = getconfig()
 
 twlogger = setuplogging(config)
 

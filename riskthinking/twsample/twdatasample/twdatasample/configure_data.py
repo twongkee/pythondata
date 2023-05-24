@@ -1,7 +1,7 @@
 import pandas as pd
 from twdatasample.twutils import getconfig, setuplogging
 
-config = getconfig("/data/data_config.yml")
+config = getconfig()
 
 mylogger = setuplogging(config)
 

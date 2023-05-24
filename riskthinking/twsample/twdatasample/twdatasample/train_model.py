@@ -17,7 +17,7 @@ from twdatasample.twutils import (
     getcleandata,
 )
 
-config = getconfig("/data/data_config.yml")
+config = getconfig()
 
 mylogger = setuplogging(config)
 
