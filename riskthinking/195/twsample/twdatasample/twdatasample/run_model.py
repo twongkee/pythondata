@@ -13,7 +13,6 @@ import logging
 from twdatasample.twutils import (
     getconfig,
     setuplogging,
-    splitjobdump,
     getsplitmodel,
     getcleandata,
 )
@@ -26,7 +25,7 @@ twlogger = setuplogging(config)
 twlogger.info(
     "============================================================================="
 )
-twlogger.info("started")
+twlogger.info("started run model")
 
 
 data = getcleandata(config)

@@ -14,7 +14,6 @@ from twdatasample.twutils import (
     getconfig,
     setuplogging,
     splitjobdump,
-    getsplitmodel,
     getcleandata,
 )
 
@@ -25,7 +24,7 @@ mylogger = setuplogging(config)
 mylogger.info(
     "============================================================================="
 )
-mylogger.info("started")
+mylogger.info("started train model")
 
 
 data = getcleandata(config)

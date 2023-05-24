@@ -52,9 +52,6 @@ def checkconfig(configfile):
             logging.warn(f"dir for {d} does not exist, creating")
             os.makedirs(dirchecklist[d])
 
-            
-        
-
 
 def setuplogging(config):
     logfile = config["logging"]["logfile"]
