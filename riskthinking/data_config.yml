@@ -12,4 +12,5 @@ data:
 logging:
         logfile: /home/twongkee/dev/riskthinking/logs/eng.log
         format: '%(asctime)s - %(levelname)s - %(message)s'
+        debuglevel: 0
 
