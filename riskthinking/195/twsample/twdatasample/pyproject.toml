@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "twdatasample"
+version = "0.1.2"
+description = ""
+authors = ["Todd Wongkee <twongkee@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pyyaml = "^6.0"
+pandas = "^2.0.1"
+joblib = "^1.2.0"
+logging = "^0.4.9.6"
+scikit-learn = "^1.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
