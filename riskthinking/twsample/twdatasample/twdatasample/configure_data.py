@@ -65,3 +65,5 @@ for df in joined_df_list:
         columns=["Open", "High", "Low", "Close", "Adj Close", "Security Name", "Symbol"]
     )
     df_features.to_parquet(f"{featuredir}/{fname}.parquet.gzip", compression="gzip")
+
+mylogger.info("completed configure data")

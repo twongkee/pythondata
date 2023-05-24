@@ -83,7 +83,7 @@ current_time = now.strftime("%H:%M:%S")
 print("joblib done:", current_time, flush=True)
 print("end job train run")
 
-mylogger.info("done")
+mylogger.info("done train model")
 mylogger.info(
     "============================================================================="
 )

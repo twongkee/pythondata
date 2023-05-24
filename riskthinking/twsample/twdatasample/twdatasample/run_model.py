@@ -61,7 +61,7 @@ current_time = now.strftime("%H:%M:%S")
 print("joblib done:", current_time, flush=True)
 print("end job train run")
 
-twlogger.info("done")
+twlogger.info("done run model")
 twlogger.info(
     "============================================================================="
 )
