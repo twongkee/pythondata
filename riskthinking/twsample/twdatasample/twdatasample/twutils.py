@@ -10,7 +10,6 @@ from datetime import datetime
 import yaml
 import logging
 import os
-from pathlib import Path
 
 
 def getconfig(configfile="/twdata/data_config.yml"):
@@ -29,12 +28,11 @@ def getconfig(configfile="/twdata/data_config.yml"):
     # test config here
     # check dirs exist
     # check values
-    checkconfig(configfile)
 
     return config
 
 
-def checkconfig(configfile):
+def checkconfig(configfile='/twdata/data_config.yml'):
     # hard coding
     # check if config is valid
     # check if config dirs exist
@@ -45,18 +43,21 @@ def checkconfig(configfile):
         "kaggledir": config["data"]["kaggle"],
         "parquedir": config["data"]["parquet"],
         "modeldir": config["data"]["modeldir"],
-        "featuredir": config["data"]["featurdir"],
-        "logdir": config["logging"]["logfile"],
+        "featuredir": config["data"]["featuredir"],
+        "logdir": config["logging"]["logdir"],
     }
 
     for d in dirchecklist.keys():
-        if Path(dirchecklist[d]) == False:
-            logging.warn(f"dir for {d} does not exist, creating")
+        if os.path.exists(dirchecklist[d]) == False:
+            print(f"dir for {d}{dirchecklist[d]} does not exist, creating")
             os.makedirs(dirchecklist[d])
+            logging.warn(f"dir for {d} does not exist, creating")
+        else:
+            print(f"dir for {d}{dirchecklist[d]} exists")
 
 
 def setuplogging(config):
-    logfile = config["logging"]["logfile"]
+    logfile = config["logging"]["logdir"] + "/" + config['logging']['logfile']
     logformat = config["logging"]["format"]
 
     logging.basicConfig(
