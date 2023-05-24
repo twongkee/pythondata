@@ -4,11 +4,11 @@ import kaggle
 from twdatasample.twutils import getconfig
 
 config = {}
-config = getconfig("/data/data_config.yml")
+config = getconfig()
 
 kaggle.api.authenticate()
 
-datapath = config["data"]["kaggke"]
+datapath = config["data"]["kaggle"]
 kaggle.api.dataset_download_files(
     "jacksoncrow/stock-market-dataset", path=datapath, unzip=True
 )

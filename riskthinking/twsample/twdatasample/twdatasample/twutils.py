@@ -13,7 +13,7 @@ import os
 from pathlib import Path
 
 
-def getconfig(configfile):
+def getconfig(configfile="/twdata/data_config.yml"):
     config = {}
     # get config in global space
     with open(configfile, "r") as stream:
@@ -21,13 +21,15 @@ def getconfig(configfile):
             # Converts yaml document to python object
             config = yaml.safe_load(stream)
             # Printing dictionary
-            print(config)
+            if config["logging"]["debuglevel"] > 0:
+                print(config)
         except yaml.YAMLError as e:
             print(e)
 
     # test config here
     # check dirs exist
     # check values
+    checkconfig(configfile)
 
     return config
 
