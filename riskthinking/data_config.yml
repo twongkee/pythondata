@@ -5,12 +5,12 @@ model:
 data:
         compression: bz2
         compression_level: 3
-        kaggle: /data/kaggle
-        parquet: /data/parquet
-        modeldir: /home/twongkee/dev/riskthinking
-        featuredir: /data/slow/twongkee/dev/riskthinking/symbols_features
+        kaggle: /twdata/kaggle
+        parquet: /twdata/parquet
+        modeldir: /twdata/model
+        featuredir: /twdata/features
 logging:
-        logfile: /home/twongkee/dev/riskthinking/logs/eng.log
+        logfile: /twdata/logs/twdataeng.log
         format: '%(asctime)s - %(levelname)s - %(message)s'
         debuglevel: 0
 
