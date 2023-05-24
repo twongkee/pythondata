@@ -5,11 +5,12 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error
-import pickle
 import joblib
 from datetime import datetime
 import yaml
 import logging
+import os
+from pathlib import Path
 
 
 def getconfig(configfile):
@@ -24,11 +25,35 @@ def getconfig(configfile):
         except yaml.YAMLError as e:
             print(e)
 
-    #test config here
-    #check dirs exist
-    #check values
+    # test config here
+    # check dirs exist
+    # check values
 
     return config
+
+
+def checkconfig(configfile):
+    # hard coding
+    # check if config is valid
+    # check if config dirs exist
+    #   warn and create if not
+    #    slight "chicken and egg for logging"
+    config = getconfig(configfile)
+    dirchecklist = {
+        "kaggledir": config["data"]["kaggle"],
+        "parquedir": config["data"]["parquet"],
+        "modeldir": config["data"]["modeldir"],
+        "featuredir": config["data"]["featurdir"],
+        "logdir": config["logging"]["logfile"],
+    }
+
+    for d in dirchecklist.keys():
+        if Path(dirchecklist[d]) == False:
+            logging.warn(f"dir for {d} does not exist, creating")
+            os.makedirs(dirchecklist[d])
+
+            
+        
 
 
 def setuplogging(config):
@@ -74,6 +99,9 @@ def splitjobdump(model, config):
 
 def getsplitmodel(config):
     model_dir = config["data"]["modeldir"]
+    estimators = config["model"]["estimators"]
+    random_state = config["model"]["random_state"]
+    n_jobs = config["model"]["n_jobs"]
     # Load the list of model parts
     model_parts = joblib.load(
         f"{model_dir}/random_forest_model_parts_{estimators}.joblib"
@@ -91,9 +119,6 @@ def getsplitmodel(config):
         lmodel.append(part)
 
     # Create the RandomForestRegressor model instance
-    estimators = config["model"]["estimators"]
-    random_state = config["model"]["random_state"]
-    n_jobs = config["model"]["n_jobs"]
     # Create a RandomForestRegressor model
     loaded_model = RandomForestRegressor(
         n_estimators=estimators, random_state=random_state, n_jobs=n_jobs, verbose=1
