@@ -1,7 +1,9 @@
 digraph G {
-
- node [shape=box]
- rankdir="LR"
+ fontname = "Sedgwick Ave";
+ node [shape=box, fontname = "Sedgwick Ave"];
+ edge [fontname = "Sedgwick Ave"];
+ rankdir="LR" ;
+ initial_setup;
  get_data;
  configure_data;
  train_model;
@@ -31,6 +33,6 @@ digraph G {
   configure_data -> feature_dir;
  }
 
- get_data -> configure_data -> train_model -> run_model
+ initial_setup -> get_data -> configure_data -> train_model -> run_model
 }
 
