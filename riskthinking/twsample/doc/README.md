@@ -6,7 +6,7 @@ steps in the process
 ![steps](./steps.svg)
 
 initial experiments using jupyter notebooks.
-[sample](./link)
+[sample](../notebooks/)
 
 once code is mostly correct, proceed to write in pure python
 resulting in
