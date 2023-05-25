@@ -44,3 +44,4 @@ resulting in
 to ensure stable builds, using poetry to control all libraries.
 
 
+using graphviz .dot format for diagrams, and a cli version of sketchviz
