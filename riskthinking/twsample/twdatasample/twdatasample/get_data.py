@@ -17,6 +17,6 @@ kaggle.api.authenticate()
 
 datapath = config["data"]["kaggle"]
 datasource = config["data"]["source"]
-
+mylogger.info(f"getting from {datasource}")
 kaggle.api.dataset_download_files(datasource, path=datapath, unzip=True)
 mylogger.info("completed get data")
