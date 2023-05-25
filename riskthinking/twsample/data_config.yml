@@ -11,7 +11,8 @@ data:
         featuredir: /twdata/features
         source: jacksoncrow/stock-market-dataset
 logging:
-        logfile: /twdata/logs/twdataeng.log
+        logdir: /twdata/logs
+        logfile: twdataeng.log
         format: '%(asctime)s - %(levelname)s - %(message)s'
         debuglevel: 0
 
