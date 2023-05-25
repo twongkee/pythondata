@@ -5,7 +5,6 @@ from twdatasample.twutils import getconfig, checkconfig, setuplogging
 
 checkconfig()
 
-
 config = {}
 config = getconfig()
 
@@ -19,7 +18,7 @@ mylogger.info("started get data")
 kaggle.api.authenticate()
 
 datapath = config["data"]["kaggle"]
-kaggle.api.dataset_download_files(
-    "jacksoncrow/stock-market-dataset", path=datapath, unzip=True
-)
+datasource = config["data"]["source"]
+
+kaggle.api.dataset_download_files(datasource, path=datapath, unzip=True)
 mylogger.info("completed get data")

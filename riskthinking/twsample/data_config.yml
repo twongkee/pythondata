@@ -1,6 +1,6 @@
 model:
         n_jobs: -1
-        estimators: 10
+        estimators: 100
         random_state: 42
 data:
         compression: bz2
@@ -9,6 +9,7 @@ data:
         parquet: /twdata/parquet
         modeldir: /twdata/model
         featuredir: /twdata/features
+        source: jacksoncrow/stock-market-dataset
 logging:
         logfile: /twdata/logs/twdataeng.log
         format: '%(asctime)s - %(levelname)s - %(message)s'
