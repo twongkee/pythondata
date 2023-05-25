@@ -3,13 +3,14 @@ digraph G {
  node [shape=box, fontname = "Handlee"];
  edge [fontname = "Handlee"];
  rankdir="LR" ;
+ config_file [shape=note, style=filled];
  initial_setup;
  get_data;
  configure_data;
  train_model;
  run_model;
 
- credentials [shape=plaintext]
+ credentials [shape=plain]
  parquet_dir [shape=cylinder]
  feature_dir [shape=cylinder]
  model_dir [shape=cylinder]

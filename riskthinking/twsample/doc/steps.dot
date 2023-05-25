@@ -1,0 +1,9 @@
+digraph G {
+ fontname = "Sedgwick Ave";
+ node [shape=box, fontname = "Sedgwick Ave"];
+ edge [fontname = "Sedgwick Ave"];
+ rankdir="LR" ;
+
+ initial_spec -> jupyter_notebooks -> cleaned_python -> containers -> deploy
+}
+
