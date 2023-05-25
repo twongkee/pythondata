@@ -10,10 +10,16 @@ mylogger.info(
 )
 mylogger.info("started configure data")
 
-
+# code specific to this dataset
+# customize for different datasets
 rootdir = config["data"]["kaggle"]
 meta = rootdir + "/symbols_valid_meta.csv"
+# read raw local csv data
 df_meta = pd.read_csv(meta)
+# choice:
+# put each symbol into separate parquet file to match input csv structure
+# could also separate by year-month-day (putting all symbols into one file per day)
+#  which may be useful if is an updating time series
 df_all = list()
 for index, row in df_meta.iterrows():
     symbol = row["NASDAQ Symbol"]
@@ -30,6 +36,7 @@ for index, row in df_meta.iterrows():
         df_all.append(df_security)
     except Exception as e:
         print(f"bad symbol {symbol}", e)
+# remove extra columns to save space
 df_meta_min = df_meta.drop(
     columns=[
         "Nasdaq Traded",
@@ -50,17 +57,17 @@ for df in df_all:
     )
     joined_df_list.append(df_joined)
 # export
-#
-#
 parquetdir = config["data"]["parquet"]
 featuredir = config["data"]["featuredir"]
 for df in joined_df_list:
     fname = df["NASDAQ Symbol"].iloc[0]
-    # print(fname)
+    # using basic pandas calculations
+    # customize for different calcuations here
     df["vol_moving_avg"] = df["Volume"].rolling(30).mean()
     df["adj_close_rolling_med"] = df["Adj Close"].rolling(30).median()
+    # write out basic data
     df.to_parquet(f"{parquetdir}/{fname}.parquet.gzip", compression="gzip")
-    # smaller data set without extra data
+    # smaller feature data set without extra data
     df_features = df.drop(
         columns=["Open", "High", "Low", "Close", "Adj Close", "Security Name", "Symbol"]
     )

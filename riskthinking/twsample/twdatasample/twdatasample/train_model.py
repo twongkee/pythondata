@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# load parquet data
+# some data transformation
+# train model
+# and initial test
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
