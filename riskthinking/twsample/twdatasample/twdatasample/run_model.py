@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# load persisted model
+# run identical tests as during training with same data
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error
-import pickle
-import joblib
 from datetime import datetime
-import yaml
-import logging
 from twdatasample.twutils import (
     getconfig,
     setuplogging,
