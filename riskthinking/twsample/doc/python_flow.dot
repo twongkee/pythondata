@@ -9,6 +9,7 @@ digraph G {
  configure_data;
  train_model;
  run_model;
+ api_server;
 
  credentials [shape=plain]
  parquet_dir [shape=cylinder]
@@ -34,6 +35,6 @@ digraph G {
   configure_data -> feature_dir;
  }
 
- initial_setup -> get_data -> configure_data -> train_model -> run_model
+ initial_setup -> get_data -> configure_data -> train_model -> run_model -> api_server
 }
 

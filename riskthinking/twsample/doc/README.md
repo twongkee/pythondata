@@ -42,14 +42,21 @@ resulting in
     - load persisted model
     - run tests
 
+- api server
+    - load persisted model
+    - serve requests to model
+
 to ensure stable builds, using poetry to control all libraries.
 
 # Containers
 
-three main, different uses:
+four main, different uses:
 
 - load data
-    - mostly I/O, not much memory or cpu
+    - mostly I/O, may be external internet not much memory or cpu
+
+- configure data
+    - local I/O, may be high cpu (depending on changes/features)
 
 - train model
     - heavy compute, may be heavy memory, also I/O
