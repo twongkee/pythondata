@@ -63,7 +63,7 @@ four main, different uses:
 - train model
     - heavy compute, may be heavy memory, also I/O
 
-- server model
+- model api server
     - depending on use case;  medium compute/memory, may be high I/O ?
     - may be external facing
         - higher security
