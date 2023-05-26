@@ -4,11 +4,9 @@
 # load persisted model
 # run identical tests as during training with same data
 
-import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error
-from datetime import datetime
 from twdatasample.twutils import (
     getconfig,
     setuplogging,
@@ -53,12 +51,7 @@ y_pred = model.predict(X_test)
 mae = mean_absolute_error(y_test, y_pred)
 mse = mean_squared_error(y_test, y_pred)
 
-print("errors", mae, mse, flush=True)
 twlogger.info(f"calculated errors {mae} , {mse}")
-now = datetime.now()
-current_time = now.strftime("%H:%M:%S")
-print("joblib done:", current_time, flush=True)
-print("end job train run")
 
 twlogger.info("done run model")
 twlogger.info(

@@ -7,11 +7,9 @@
 # initial test
 # persist model
 
-import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error
-from datetime import datetime
 from twdatasample.twutils import (
     getconfig,
     setuplogging,
@@ -70,7 +68,7 @@ mylogger.info("start dump")
 splitjobdump(model, config)
 mylogger.info("dump complete")
 
-mylogger.info("make predictions")
+mylogger.info("make test predictions")
 # Make predictions on test data
 y_pred = model.predict(X_test)
 
@@ -78,13 +76,7 @@ y_pred = model.predict(X_test)
 mae = mean_absolute_error(y_test, y_pred)
 mse = mean_squared_error(y_test, y_pred)
 
-print("errors", mae, mse, flush=True)
 mylogger.info(f"calculated errors {mae} , {mse}")
-now = datetime.now()
-current_time = now.strftime("%H:%M:%S")
-print("joblib done:", current_time, flush=True)
-print("end job train run")
-
 mylogger.info("done train model")
 mylogger.info(
     "============================================================================="
