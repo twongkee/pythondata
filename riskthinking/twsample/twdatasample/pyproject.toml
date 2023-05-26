@@ -13,6 +13,7 @@ joblib = "^1.2.0"
 logging = "^0.4.9.6"
 scikit-learn = "^1.2.2"
 kaggle = "^1.5.13"
+flask = "^2.3.2"
 
 
 [build-system]
