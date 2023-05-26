@@ -54,6 +54,8 @@ four main, different uses:
 
 - load data
     - mostly I/O, may be external internet not much memory or cpu
+    - external internet/ credentials
+        - higher security
 
 - configure data
     - local I/O, may be high cpu (depending on changes/features)
@@ -63,5 +65,7 @@ four main, different uses:
 
 - server model
     - depending on use case;  medium compute/memory, may be high I/O ?
+    - may be external facing
+        - higher security
 
 using graphviz .dot format for diagrams, and a cli version of sketchviz
