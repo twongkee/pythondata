@@ -1,5 +1,5 @@
 from twdatasample.twutils import getconfig, checkconfig, setuplogging
-import os
+import subprocess
 
 
 def run():
@@ -12,7 +12,9 @@ def run():
         "============================================================================="
     )
     mylogger.info("shrink data")
-    os.system
+    result = subprocess.run(["/twcode/shrink.sh"], shell=True)
+    return result
+    
 
 if __name__ == "__main__":
     run()
