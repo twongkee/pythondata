@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM python:3.11.3-slim as twpython311
+FROM python:3.11.3-slim
 COPY . /twcode
 RUN mkdir /twdata
 COPY ./data_config.yml /twdata/data_config.yml
@@ -18,8 +18,6 @@ ENV \
 # prepend poetry and venv to path
 ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
 
-
-
 RUN apt-get update \
    && apt-get install --no-install-recommends -y \
       curl 
@@ -29,5 +27,6 @@ RUN curl -sSL https://install.python-poetry.org | python3 - && \
    poetry install
 
 
-CMD poetry run python -m twdatasample.api_server
+CMD cd /twcode &&\
+    poetry run python -m twdatasample.api_server
 
