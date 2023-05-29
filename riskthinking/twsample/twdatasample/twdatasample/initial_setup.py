@@ -1,14 +1,18 @@
 from twdatasample.twutils import getconfig, checkconfig, setuplogging
 
-checkconfig()
 
-config = {}
-config = getconfig()
+def run():
+    checkconfig()
 
-mylogger = setuplogging(config)
+    config = {}
+    config = getconfig()
 
-mylogger.info(
-    "============================================================================="
-)
-mylogger.info("initialized logs")
+    mylogger = setuplogging(config)
 
+    mylogger.info(
+        "============================================================================="
+    )
+    mylogger.info("initialized logs")
+
+if __name__ == "__main__":
+    run()

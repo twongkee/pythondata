@@ -13,10 +13,16 @@ mylogger.info(
 )
 mylogger.info("started get data")
 
-kaggle.api.authenticate()
 
-datapath = config["data"]["kaggle"]
-datasource = config["data"]["source"]
-mylogger.info(f"getting from {datasource}")
-kaggle.api.dataset_download_files(f"{datasource}", path=datapath, unzip=True)
-mylogger.info("completed get data")
+def run():
+    kaggle.api.authenticate()
+
+    datapath = config["data"]["kaggle"]
+    datasource = config["data"]["source"]
+    mylogger.info(f"getting from {datasource}")
+    kaggle.api.dataset_download_files(f"{datasource}", path=datapath, unzip=True)
+    mylogger.info("completed get data")
+
+
+if __name__ == "__main__":
+    run()

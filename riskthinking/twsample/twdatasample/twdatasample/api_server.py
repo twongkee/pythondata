@@ -5,6 +5,8 @@ from twdatasample.twutils import (
     setuplogging,
     getsplitmodel,
 )
+from twdatasample import initial_setup, get_data, shrink_data, train_model
+
 
 # get config in global space
 config = getconfig()
@@ -28,6 +30,48 @@ twlogger.info(f"name {__name__}")
 
 
 twlogger.info("start flask app")
+
+
+# Define a route to initialize
+@app.route("/initialize", methods=["POST"])
+def initialize():
+    rawdata = request.get_json()
+    twlogger.info(f"initialize: {rawdata}")
+
+    result = initial_setup.run()
+    return jsonify({"initialize": result})
+
+
+# Define a route to load data
+@app.route("/loaddata", methods=["POST"])
+def loaddata():
+    rawdata = request.get_json()
+    twlogger.info(f"getdata: {rawdata}")
+
+    result = get_data.run()
+    return jsonify({"loaddata": result})
+
+
+# Define a route to shrink data
+@app.route("/shrink", methods=["POST"])
+def shrink():
+    rawdata = request.get_json()
+    twlogger.info(f"shrink: {rawdata}")
+
+    result = shrink_data.run()
+    return jsonify({"shrink": result})
+
+
+# Define a route to load data
+@app.route("/train", methods=["POST"])
+def train():
+    rawdata = request.get_json()
+    twlogger.info(f"train: {rawdata}")
+
+    result = train_model.run()
+    return jsonify({"train": result})
+
+
 # Define a route for model prediction
 @app.route("/predict", methods=["POST"])
 def predict():
