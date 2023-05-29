@@ -22,13 +22,12 @@ ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
 
 RUN apt-get update \
    && apt-get install --no-install-recommends -y \
-      curl \
-      build-essential
+      curl 
 
 RUN curl -sSL https://install.python-poetry.org | python3 - && \
    cd /twcode && \
    poetry install
 
 
-CMD poetry run python -m twdatasample.initial_setup
+CMD poetry run python -m twdatasample.api_server
 
