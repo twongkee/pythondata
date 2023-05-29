@@ -83,5 +83,26 @@ todo: determine if model can be split into smaller bits, and run on distinct (sm
 
 most familiar with AWS to deploy. 
 
+deploy would be into some sort of framework.
+
+for this exercise, put all steps into to api server:
+
+```
+/initialize
+   initialize directories 
+/getdata
+   load data from api (need credentials, currently configured as ENV vars, passed into docker container)
+/shrink
+   shrink data to only a few examples for tests (skip if want full version)
+/configure
+   run the etl to create features
+/train
+   train the data on the created features and persist model to the local docker space (need to configure image to contain)
+/loadmodel
+   load model from persisted space
+/predict
+   run the prediction, as requested.
+
+```
 
 using graphviz .dot format for diagrams, and a cli version of sketchviz
