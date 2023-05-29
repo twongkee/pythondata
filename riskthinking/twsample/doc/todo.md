@@ -28,3 +28,6 @@ further expansion
 - cleanup docs/requirements/specs
 
 - doc diagram creation
+
+- cleanup/refactor python code
+
