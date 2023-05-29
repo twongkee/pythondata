@@ -19,10 +19,6 @@ twlogger.info(
 twlogger.info("started model server")
 
 
-# Load the trained model
-twlogger.info("load trained model")
-model = getsplitmodel(config)
-twlogger.info("done loading")
 
 # Create a Flask app
 app = Flask(__name__)
@@ -43,13 +39,13 @@ def initialize():
 
 
 # Define a route to load data
-@app.route("/loaddata", methods=["POST"])
-def loaddata():
+@app.route("/get_data", methods=["POST"])
+def get_data():
     rawdata = request.get_json()
-    twlogger.info(f"getdata: {rawdata}")
+    twlogger.info(f"get_data: {rawdata}")
 
     result = get_data.run()
-    return jsonify({"loaddata": result})
+    return jsonify({"get_data": result})
 
 
 # Define a route to shrink data
@@ -62,7 +58,7 @@ def shrink():
     return jsonify({"shrink": result})
 
 
-# Define a route to load data
+# Define a route to train_model
 @app.route("/train", methods=["POST"])
 def train():
     rawdata = request.get_json()
@@ -71,6 +67,18 @@ def train():
     result = train_model.run()
     return jsonify({"train": result})
 
+# Define a route to load_model
+@app.route("/load_model", methods=["POST"])
+def load_model():
+    rawdata = request.get_json()
+    twlogger.info(f"load_model: {rawdata}")
+    # Load the trained model
+    twlogger.info("load trained model")
+    model = getsplitmodel(config)
+    twlogger.info("done loading")
+
+    result = train_model.run()
+    return jsonify({"model_loaded": result})
 
 # Define a route for model prediction
 @app.route("/predict", methods=["POST"])
