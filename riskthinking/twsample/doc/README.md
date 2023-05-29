@@ -46,11 +46,10 @@ resulting in
     - load persisted model
     - serve requests to model
 
-to ensure stable builds, using poetry to control all libraries.
 
 # Containers
 
-Packaged python using [poetry](https://python-poetry.org/) to ensure all dependencies stay constant.
+Docker containers, with python using [poetry](https://python-poetry.org/) to ensure all dependencies stay constant.
 
 can run container with syntax `docker run --env-file ./kaggle.env -it -p 5000:5000 -v /localdata:/twdata $CONTAINER_ID /bin/bash`
 where `kaggle.env` contains the kaggle credentials.  (only needed for the load data step).
