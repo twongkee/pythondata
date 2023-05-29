@@ -21,4 +21,10 @@ further expansion
 
 - further look at moving model from pure python to pyspark/ cluster to run models/persist on distributed cluster
 
+- connect ci up to build images automatically, on AWS/ other?
 
+- build makefiles for
+
+- cleanup docs/requirements/specs
+
+- doc diagram creation
