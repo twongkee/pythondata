@@ -57,6 +57,14 @@ def shrink():
     result = shrink_data.run()
     return jsonify({"shrink": result})
 
+# Define a route to shrink data
+@app.route("/convert", methods=["POST"])
+def shrink():
+    rawdata = request.get_json()
+    twlogger.info(f"convert: {rawdata}")
+
+    result = shrink_data.run()
+    return jsonify({"convert": result})
 
 # Define a route to train_model
 @app.route("/train", methods=["POST"])

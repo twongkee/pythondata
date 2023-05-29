@@ -2,6 +2,7 @@ echo "shrink data set for fast tests"
 echo "delete all but IBM stock ad etfs"
 
 cd /twdata/kaggle
+rm -rf full
 mkdir full
 mv etfs/ stocks/ full
 mkdir etfs
