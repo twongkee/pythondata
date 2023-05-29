@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 FROM python:3.11.3-slim
 COPY . /twcode
-RUN mkdir /twdata
+RUN mkdir -p /twdata/logs
 COPY ./data_config.yml /twdata/data_config.yml
 
 ENV \
