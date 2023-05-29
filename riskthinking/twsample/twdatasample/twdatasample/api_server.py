@@ -18,7 +18,7 @@ twlogger.info(
 )
 twlogger.info("started model server")
 
-
+model = "unloaded"
 
 # Create a Flask app
 app = Flask(__name__)
@@ -67,6 +67,7 @@ def train():
     result = train_model.run()
     return jsonify({"train": result})
 
+
 # Define a route to load_model
 @app.route("/load_model", methods=["POST"])
 def load_model():
@@ -77,8 +78,9 @@ def load_model():
     model = getsplitmodel(config)
     twlogger.info("done loading")
 
-    result = train_model.run()
+    # result = train_model.run()
     return jsonify({"model_loaded": result})
+
 
 # Define a route for model prediction
 @app.route("/predict", methods=["POST"])
@@ -95,6 +97,9 @@ def predict():
     dataDF = pd.DataFrame.from_dict(data)
 
     twlogger.info("make predictions")
+    if model == "unloaded":
+        twlogger.info("model was unloaded")
+        model = getsplitmodel(config)
     # Make predictions using the loaded model
     predictions = model.predict(dataDF)
 
