@@ -75,9 +75,10 @@ def load_model():
     twlogger.info(f"load_model: {rawdata}")
     # Load the trained model
     twlogger.info("load trained model")
+    global model
     model = getsplitmodel(config)
     twlogger.info("done loading")
-
+    result = "model loaded"
     # result = train_model.run()
     return jsonify({"model_loaded": result})
 
@@ -85,6 +86,7 @@ def load_model():
 # Define a route for model prediction
 @app.route("/predict", methods=["POST"])
 def predict():
+    global model
     # Get the data from the request
     rawdata = request.get_json()
     twlogger.info(f"data : {rawdata}")
