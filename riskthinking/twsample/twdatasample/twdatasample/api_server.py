@@ -5,7 +5,7 @@ from twdatasample.twutils import (
     setuplogging,
     getsplitmodel,
 )
-from twdatasample import initial_setup, get_data, shrink_data, train_model
+from twdatasample import initial_setup, get_data, shrink_data, configure_data, train_model
 
 
 # get config in global space
@@ -58,12 +58,12 @@ def shrink():
     return jsonify({"shrink": result})
 
 # Define a route to shrink data
-@app.route("/convert", methods=["POST"])
-def shrink():
+@app.route("/configure", methods=["POST"])
+def configure():
     rawdata = request.get_json()
     twlogger.info(f"convert: {rawdata}")
 
-    result = shrink_data.run()
+    result = configure_data.run()
     return jsonify({"convert": result})
 
 # Define a route to train_model
