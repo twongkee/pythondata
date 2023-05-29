@@ -51,7 +51,7 @@ resulting in
 
 Docker containers, with python using [poetry](https://python-poetry.org/) to ensure all dependencies stay constant.
 
-can run container with syntax `docker run --env-file ./kaggle.env -it -p 5000:5000 -v /localdata:/twdata $CONTAINER_ID /bin/bash`
+can run container shell with syntax `docker run --env-file ./kaggle.env -it -p 5000:5000 -v /localdata:/twdata $CONTAINER_ID /bin/bash`
 where `kaggle.env` contains the kaggle credentials.  (only needed for the load data step).
 
 the -v flag is required to persist the data.
@@ -88,12 +88,20 @@ deploy would be into some sort of framework.
 for this exercise, put all steps into to api server:
 
 ```
+docker run --env-file ./kaggle.env -p 5000:5000 ${IMAGE_ID}
+````
+
+then use a [client](../notebooks/client_api_test.ipynb) to execute the steps in the order below 
+
+```
+endpoints:
+
 /initialize
    initialize directories 
 /getdata
    load data from api (need credentials, currently configured as ENV vars, passed into docker container)
 /shrink
-   shrink data to only a few examples for tests (skip if want full version)
+   shrink data to only a few examples for tests (skip if want full version, full version is 170 gig, and takes ~ 1hr or so, client likely will timeout)
 /configure
    run the etl to create features
 /train
