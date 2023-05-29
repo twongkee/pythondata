@@ -26,6 +26,7 @@ mylogger.info(
 )
 mylogger.info("started train model")
 
+
 def run():
     data = getcleandata(config)
 
@@ -33,7 +34,6 @@ def run():
     # Select features and target
     features = ["vol_moving_avg", "adj_close_rolling_med"]
     target = "Volume"
-
 
     X = data[features]
     y = data[target]
@@ -81,6 +81,7 @@ def run():
     mylogger.info(
         "============================================================================="
     )
+
 
 if __name__ == "__main__":
     run()

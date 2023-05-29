@@ -14,5 +14,6 @@ def run():
     )
     mylogger.info("initialized logs")
 
+
 if __name__ == "__main__":
     run()

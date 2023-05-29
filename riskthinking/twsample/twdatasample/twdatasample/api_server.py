@@ -5,7 +5,13 @@ from twdatasample.twutils import (
     setuplogging,
     getsplitmodel,
 )
-from twdatasample import initial_setup, get_data, shrink_data, configure_data, train_model
+from twdatasample import (
+    initial_setup,
+    get_data,
+    shrink_data,
+    configure_data,
+    train_model,
+)
 
 
 # get config in global space
@@ -57,6 +63,7 @@ def shrink():
     result = shrink_data.run()
     return jsonify({"shrink": result})
 
+
 # Define a route to shrink data
 @app.route("/configure", methods=["POST"])
 def configure():
@@ -65,6 +72,7 @@ def configure():
 
     result = configure_data.run()
     return jsonify({"convert": result})
+
 
 # Define a route to train_model
 @app.route("/train", methods=["POST"])

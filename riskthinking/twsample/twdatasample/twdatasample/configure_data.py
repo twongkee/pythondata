@@ -10,6 +10,7 @@ mylogger.info(
 )
 mylogger.info("started configure data")
 
+
 def run():
     # code specific to this dataset
     # customize for different datasets
@@ -70,11 +71,20 @@ def run():
         df.to_parquet(f"{parquetdir}/{fname}.parquet.gzip", compression="gzip")
         # smaller feature data set without extra data
         df_features = df.drop(
-            columns=["Open", "High", "Low", "Close", "Adj Close", "Security Name", "Symbol"]
+            columns=[
+                "Open",
+                "High",
+                "Low",
+                "Close",
+                "Adj Close",
+                "Security Name",
+                "Symbol",
+            ]
         )
         df_features.to_parquet(f"{featuredir}/{fname}.parquet.gzip", compression="gzip")
 
     mylogger.info("completed configure data")
+
 
 if __name__ == "__main__":
     run()

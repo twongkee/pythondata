@@ -13,8 +13,8 @@ def run():
     )
     mylogger.info("shrink data")
     result = subprocess.run(["/twcode/shrink.sh"], shell=True)
-    return (f"code: {result.returncode} stdout: {result.stdout} stderr: {result.stderr}") 
-    
+    return f"code: {result.returncode} stdout: {result.stdout} stderr: {result.stderr}"
+
 
 if __name__ == "__main__":
     run()
