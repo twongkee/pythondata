@@ -39,8 +39,8 @@ def initialize():
 
 
 # Define a route to load data
-@app.route("/get_data", methods=["POST"])
-def get_data():
+@app.route("/getdata", methods=["POST"])
+def getdata():
     rawdata = request.get_json()
     twlogger.info(f"get_data: {rawdata}")
 
@@ -69,10 +69,10 @@ def train():
 
 
 # Define a route to load_model
-@app.route("/load_model", methods=["POST"])
+@app.route("/loadmodel", methods=["POST"])
 def load_model():
     rawdata = request.get_json()
-    twlogger.info(f"load_model: {rawdata}")
+    twlogger.info(f"loadmodel: {rawdata}")
     # Load the trained model
     twlogger.info("load trained model")
     global model
