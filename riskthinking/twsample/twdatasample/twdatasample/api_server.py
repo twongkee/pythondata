@@ -28,6 +28,8 @@ twlogger.info(f"name {__name__}")
 
 
 twlogger.info("start flask app")
+
+
 # Define a route for model prediction
 @app.route("/predict", methods=["POST"])
 def predict():
