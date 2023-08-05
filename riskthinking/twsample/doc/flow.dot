@@ -1,0 +1,38 @@
+digraph G {
+ fontname = "Handlee";
+ node [shape=box, fontname = "Handlee"];
+ edge [fontname = "Handlee"];
+ rankdir="LR" ;
+ initial_setup;
+ get_data;
+ configure_data;
+ train_model;
+ run_model;
+
+ credentials [shape=plaintext]
+ parquet_dir [shape=cylinder]
+ feature_dir [shape=cylinder]
+ model_dir [shape=cylinder]
+
+ 
+ {
+  rank=same;
+  credentials -> get_data;
+ }
+ {
+  rank=same;
+  train_model -> model_dir;
+ }
+
+ { 
+  rank=same;
+  configure_data -> parquet_dir;
+ }
+ { 
+  rank=same;
+  configure_data -> feature_dir;
+ }
+
+ initial_setup -> get_data -> configure_data -> train_model -> run_model
+}
+

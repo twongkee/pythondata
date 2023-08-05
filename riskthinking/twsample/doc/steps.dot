@@ -1,0 +1,9 @@
+digraph G {
+ fontname = "Handlee";
+ node [shape=box, fontname = "Handlee"];
+ edge [fontname = "Handlee"];
+ rankdir="LR" ;
+
+ initial_spec -> jupyter_notebooks -> cleaned_python -> containers -> deploy
+}
+
