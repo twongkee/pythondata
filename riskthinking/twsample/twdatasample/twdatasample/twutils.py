@@ -1,20 +1,23 @@
 #!/usr/bin/env python
 # coding: utf-8
-
+"""
+utils
+"""
+import os
+import logging
 import pandas as pd
-from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_absolute_error, mean_squared_error
 import joblib
 import yaml
-import logging
-import os
 
 
 def getconfig(configfile="/twdata/data_config.yml"):
+    """
+    read config from yml file
+    """
     config = {}
     # get config in global space
-    with open(configfile, "r") as stream:
+    with open(configfile, "r", encoding="utf-8") as stream:
         try:
             # Converts yaml document to python object
             config = yaml.safe_load(stream)
@@ -32,11 +35,13 @@ def getconfig(configfile="/twdata/data_config.yml"):
 
 
 def checkconfig(configfile="/twdata/data_config.yml"):
+    """
     # hard coding
     # check if config is valid
     # check if config dirs exist
     #   warn and create if not
     #    slight "chicken and egg for logging"
+    """
     config = getconfig(configfile)
     dirchecklist = {
         "kaggledir": config["data"]["kaggle"],
@@ -47,7 +52,7 @@ def checkconfig(configfile="/twdata/data_config.yml"):
     }
 
     for d in dirchecklist.keys():
-        if os.path.exists(dirchecklist[d]) == False:
+        if os.path.exists(dirchecklist[d]) is False:
             print(f"dir for {d}{dirchecklist[d]} does not exist, creating")
             os.makedirs(dirchecklist[d])
             logging.warn(f"dir for {d} does not exist, creating")
@@ -56,6 +61,9 @@ def checkconfig(configfile="/twdata/data_config.yml"):
 
 
 def setuplogging(config):
+    """
+    setup default logging
+    """
     logfile = config["logging"]["logdir"] + "/" + config["logging"]["logfile"]
     logformat = config["logging"]["format"]
 
@@ -67,6 +75,9 @@ def setuplogging(config):
 
 
 def splitjobdump(model, config):
+    """
+    dump split job
+    """
     # Define the number of parts to split the model into
     estimators = config["model"]["estimators"]
     model_dir = config["data"]["modeldir"]
@@ -97,6 +108,9 @@ def splitjobdump(model, config):
 
 
 def getsplitmodel(config):
+    """
+    load split model
+    """
     model_dir = config["data"]["modeldir"]
     estimators = config["model"]["estimators"]
     random_state = config["model"]["random_state"]
@@ -134,6 +148,9 @@ def getsplitmodel(config):
 
 
 def getcleandata(config):
+    """
+    load data
+    """
     featuredir = config["data"]["featuredir"]
 
     data = pd.read_parquet(featuredir)

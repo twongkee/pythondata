@@ -99,6 +99,7 @@ def load_model():
     return jsonify({"model_loaded": result})
 
 
+
 # Define a route for model prediction
 @app.route("/predict", methods=["POST"])
 def predict():
